@@ -1,2 +1,3 @@
 ---
-# defaults file for ansible-role-antigen
+# Should Oh-My-Zsh be installed with Antigen (doesn't call `antigen use`)
+antigen_install_oh_my_zsh: yes

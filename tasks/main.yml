@@ -1,2 +1,4 @@
 ---
-# tasks file for ansible-role-antigen
+- import_tasks: install.yml
+
+- import_tasks: configure.yml
