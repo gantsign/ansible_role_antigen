@@ -2,6 +2,7 @@ Ansible Role: Antigen
 =======================
 
 [![Build Status](https://travis-ci.com/gantsign/ansible-role-antigen.svg?branch=master)](https://travis-ci.com/gantsign/ansible-role-antigen)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gantsign.antigen-blue.svg)](https://galaxy.ansible.com/gantsign/antigen)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gantsign/ansible-role-antigen/master/LICENSE)
 
 Role to install the [Antigen](http://antigen.sharats.me/) plugin manger for Zsh
