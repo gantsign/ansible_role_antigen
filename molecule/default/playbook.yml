@@ -25,7 +25,7 @@
         mode: 'u=rwx,go=r'
 
   roles:
-    - role: ansible-role-antigen
+    - role: ansible_role_antigen
       users:
         - username: test_usr1
           antigen_libraries:

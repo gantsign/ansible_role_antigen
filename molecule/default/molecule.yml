@@ -9,19 +9,19 @@ lint:
   name: yamllint
 
 platforms:
-  - name: ansible-role-antigen-debian-min
+  - name: ansible_role_antigen_debian_min
     image: debian:8
-  - name: ansible-role-antigen-debian-max
+  - name: ansible_role_antigen_debian_max
     image: debian:9
-  - name: ansible-role-antigen-ubuntu-min
+  - name: ansible_role_antigen_ubuntu_min
     image: ubuntu:14.04
-  - name: ansible-role-antigen-ubuntu-max
+  - name: ansible_role_antigen_ubuntu_max
     image: ubuntu:18.04
-  - name: ansible-role-antigen-centos
+  - name: ansible_role_antigen_centos
     image: centos:7
-  - name: ansible-role-antigen-fedora
+  - name: ansible_role_antigen_fedora
     image: fedora:28
-  - name: ansible-role-antigen-opensuse-leap
+  - name: ansible_role_antigen_opensuse
     image: opensuse:42.2
 
 provisioner:
