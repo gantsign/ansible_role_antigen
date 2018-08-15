@@ -52,6 +52,21 @@ Role Variables
 The following variables will change the behavior of this role:
 
 ```yaml
+# Antigen version number
+antigen_version: '2.0.2'
+
+# SHA256 sum for the redistributable package
+antigen_redis_sha256sum: 'f47ec933b32c578abe8cb39b24e0ddd114ef5cc01b3c05bcb634859ead31493f'
+
+# Should Oh-My-Zsh be installed with Antigen (doesn't call `antigen use`)
+antigen_install_oh_my_zsh: yes
+
+# Mirror location for Antigen download
+antigen_redis_mirror: 'https://github.com/zsh-users/antigen/releases/download/v{{ antigen_version }}'
+
+# Directory to store files downloaded for Antigen installation on the remote box
+antigen_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
+
 # Antigen is installed per user so you need to specify the users to install it for
 users:
   - username: # The username of the user to install Antigen for

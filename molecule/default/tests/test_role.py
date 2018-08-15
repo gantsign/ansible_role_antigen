@@ -24,6 +24,17 @@ def test_antigen_install(File, username):
     'test_usr1',
     'test_usr2',
 ])
+def test_antigen_install_file(File, username):
+    antigen = File('/home/' + username + '/.antigen/antigen.zsh')
+    assert antigen.exists
+    assert antigen.is_file
+    assert antigen.user == username
+
+
+@pytest.mark.parametrize('username', [
+    'test_usr1',
+    'test_usr2',
+])
 def test_oh_my_zsh_install(File, username):
     antigen = File('/home/' + username +
                    '/.antigen/bundles/robbyrussell/oh-my-zsh')
