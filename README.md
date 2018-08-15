@@ -8,6 +8,10 @@ Ansible Role: Antigen
 Role to install the [Antigen](http://antigen.sharats.me/) plugin manger for Zsh
 and use it to configure Zsh.
 
+This role has a companion role that enables you to conditionally install
+particular Antigen bundles. You can find details of that role at
+[gantsign.antigen_budles](https://galaxy.ansible.com/gantsign/antigen_bundles).
+
 Requirements
 ------------
 
