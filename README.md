@@ -1,5 +1,5 @@
 Ansible Role: Antigen
-=======================
+=====================
 
 [![Build Status](https://travis-ci.com/gantsign/ansible_role_antigen.svg?branch=master)](https://travis-ci.com/gantsign/ansible_role_antigen)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gantsign.antigen-blue.svg)](https://galaxy.ansible.com/gantsign/antigen)
