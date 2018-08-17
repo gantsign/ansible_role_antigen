@@ -2,10 +2,46 @@
 language: python
 python: '2.7'
 
-# Spin off separate builds for each of the following versions of Ansible
-env:
-  - ANSIBLE_VERSION=2.4.6
-  - ANSIBLE_VERSION=2.6.2
+# Spin off separate builds for each of the following versions
+# of Ansible and Linux.
+matrix:
+  include:
+    - env:
+        - ANSIBLE_VERSION=2.4.6
+        - MOLECULE_SCENARIO=centos
+    - env:
+        - ANSIBLE_VERSION=2.4.6
+        - MOLECULE_SCENARIO=debian_max
+    - env:
+        - ANSIBLE_VERSION=2.4.6
+        - MOLECULE_SCENARIO=debian_min
+    - env:
+        - ANSIBLE_VERSION=2.4.6
+        - MOLECULE_SCENARIO=ubuntu_max
+    - env:
+        - ANSIBLE_VERSION=2.4.6
+        - MOLECULE_SCENARIO=ubuntu_min
+    - env:
+        - ANSIBLE_VERSION=2.4.6
+        - MOLECULE_SCENARIO=opensuse
+    - env:
+        - ANSIBLE_VERSION=2.6.2
+        - MOLECULE_SCENARIO=centos
+    - env:
+        - ANSIBLE_VERSION=2.6.2
+        - MOLECULE_SCENARIO=debian_max
+    - env:
+        - ANSIBLE_VERSION=2.6.2
+        - MOLECULE_SCENARIO=debian_min
+    - env:
+        - ANSIBLE_VERSION=2.6.2
+        - MOLECULE_SCENARIO=ubuntu_max
+    - env:
+        - ANSIBLE_VERSION=2.6.2
+        - MOLECULE_SCENARIO=ubuntu_min
+    - env:
+        - ANSIBLE_VERSION=2.6.2
+        - MOLECULE_SCENARIO=opensuse
 
 # Require the standard build environment
 sudo: required
@@ -46,7 +82,7 @@ install:
   - molecule destroy
 
 script:
-  - molecule test
+  - molecule test --scenario-name=$MOLECULE_SCENARIO
 
 branches:
   only:
