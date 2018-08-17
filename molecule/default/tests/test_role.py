@@ -12,8 +12,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     'test_usr1',
     'test_usr2',
 ])
-def test_antigen_install(File, username):
-    antigen = File('/home/' + username + '/.antigen')
+def test_antigen_install(host, username):
+    antigen = host.file('/home/' + username + '/.antigen')
     assert antigen.exists
     assert antigen.is_directory
     assert antigen.user == username
@@ -24,8 +24,8 @@ def test_antigen_install(File, username):
     'test_usr1',
     'test_usr2',
 ])
-def test_antigen_install_file(File, username):
-    antigen = File('/home/' + username + '/.antigen/antigen.zsh')
+def test_antigen_install_file(host, username):
+    antigen = host.file('/home/' + username + '/.antigen/antigen.zsh')
     assert antigen.exists
     assert antigen.is_file
     assert antigen.user == username
@@ -35,9 +35,9 @@ def test_antigen_install_file(File, username):
     'test_usr1',
     'test_usr2',
 ])
-def test_oh_my_zsh_install(File, username):
-    antigen = File('/home/' + username +
-                   '/.antigen/bundles/robbyrussell/oh-my-zsh')
+def test_oh_my_zsh_install(host, username):
+    antigen = host.file('/home/' + username +
+                        '/.antigen/bundles/robbyrussell/oh-my-zsh')
     assert antigen.exists
     assert antigen.is_directory
     assert antigen.user == username
@@ -48,8 +48,8 @@ def test_oh_my_zsh_install(File, username):
     'test_usr1',
     'test_usr2',
 ])
-def test_zsh_config(File, username):
-    zshrc = File('/home/' + username + '/.zshrc')
+def test_zsh_config(host, username):
+    zshrc = host.file('/home/' + username + '/.zshrc')
     assert zshrc.exists
     assert zshrc.is_file
     assert zshrc.user == username
@@ -61,8 +61,8 @@ def test_zsh_config(File, username):
     'test_usr1',
     'test_usr2',
 ])
-def test_antigen_config(File, username):
-    antigenrc = File('/home/' + username + '/.antigenrc')
+def test_antigen_config(host, username):
+    antigenrc = host.file('/home/' + username + '/.antigenrc')
     assert antigenrc.exists
     assert antigenrc.is_file
     assert antigenrc.user == username
@@ -94,8 +94,8 @@ antigen apply
 '''.strip()
 
 
-def test_simple_theme_config(File):
-    theme = File('/home/test_usr1/.antigen-etc/theme.zsh')
+def test_simple_theme_config(host):
+    theme = host.file('/home/test_usr1/.antigen-etc/theme.zsh')
     assert theme.exists
     assert theme.is_file
     assert theme.user == 'test_usr1'
@@ -109,8 +109,8 @@ antigen theme robbyrussell
 '''.strip()
 
 
-def test_sinple_library_config(File):
-    library = File('/home/test_usr1/.antigen-etc/use.d/oh-my-zsh.zsh')
+def test_sinple_library_config(host):
+    library = host.file('/home/test_usr1/.antigen-etc/use.d/oh-my-zsh.zsh')
     assert library.exists
     assert library.is_file
     assert library.user == 'test_usr1'
@@ -124,8 +124,8 @@ antigen use oh-my-zsh
 '''.strip()
 
 
-def test_bundle_with_url_config(File):
-    bundle = File('/home/test_usr1/.antigen-etc/bundle.d/git.zsh')
+def test_bundle_with_url_config(host):
+    bundle = host.file('/home/test_usr1/.antigen-etc/bundle.d/git.zsh')
     assert bundle.exists
     assert bundle.is_file
     assert bundle.user == 'test_usr1'
@@ -140,8 +140,8 @@ antigen bundle \
 '''.strip()
 
 
-def test_bundle_with_location_config(File):
-    bundle = File('/home/test_usr1/.antigen-etc/bundle.d/ant.zsh')
+def test_bundle_with_location_config(host):
+    bundle = host.file('/home/test_usr1/.antigen-etc/bundle.d/ant.zsh')
     assert bundle.exists
     assert bundle.is_file
     assert bundle.user == 'test_usr1'
@@ -157,8 +157,8 @@ antigen bundle \
 '''.strip()
 
 
-def test_theme_with_url_config(File):
-    theme = File('/home/test_usr2/.antigen-etc/theme.zsh')
+def test_theme_with_url_config(host):
+    theme = host.file('/home/test_usr2/.antigen-etc/theme.zsh')
     assert theme.exists
     assert theme.is_file
     assert theme.user == 'test_usr2'
@@ -172,8 +172,8 @@ antigen theme https://example.com/testTeme1.git
 '''.strip()
 
 
-def test_advanced_library_config(File):
-    library = File('/home/test_usr2/.antigen-etc/use.d/prezto.zsh')
+def test_advanced_library_config(host):
+    library = host.file('/home/test_usr2/.antigen-etc/use.d/prezto.zsh')
     assert library.exists
     assert library.is_file
     assert library.user == 'test_usr2'
@@ -190,8 +190,8 @@ antigen use prezto \
 '''.strip()
 
 
-def test_bundle_with_args_and_env_config(File):
-    bundle = File('/home/test_usr2/.antigen-etc/bundle.d/mvn.zsh')
+def test_bundle_with_args_and_env_config(host):
+    bundle = host.file('/home/test_usr2/.antigen-etc/bundle.d/mvn.zsh')
     assert bundle.exists
     assert bundle.is_file
     assert bundle.user == 'test_usr2'
@@ -209,8 +209,8 @@ antigen bundle \
 '''.strip()
 
 
-def test_bundle_with_tag_config(File):
-    bundle = File('/home/test_usr2/.antigen-etc/bundle.d/gradle.zsh')
+def test_bundle_with_tag_config(host):
+    bundle = host.file('/home/test_usr2/.antigen-etc/bundle.d/gradle.zsh')
     assert bundle.exists
     assert bundle.is_file
     assert bundle.user == 'test_usr2'
@@ -229,10 +229,10 @@ antigen bundle \
 '''.strip()
 
 
-def test_console_setup(File):
+def test_console_setup(host):
     # console-setup is Debian family specific
-    if File('/etc/debian_version').exists:
-        setup = File('/etc/default/console-setup')
+    if host.file('/etc/debian_version').exists:
+        setup = host.file('/etc/default/console-setup')
         assert setup.exists
         assert setup.is_file
         assert setup.user == 'root'
