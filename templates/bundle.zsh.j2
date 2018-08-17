@@ -8,7 +8,7 @@
 {%- endif -%}
 antigen bundle
 {%- if antigen_bundle.url is defined and antigen_bundle.url not in (None, '', omit) -%}
-    {{ " \\\n    "}}{{ ('--url=' + antigen_bundle.url) | quote }}
+    {{ " \\\n    "}}"--url={{ (antigen_bundle.url) | regex_replace('([\\"\\\\`]|\\$\\()', '\\\\\\1') }}"
     {%- if antigen_bundle.tag is defined and antigen_bundle.tag not in (None, '', omit) -%}
         {{ " \\\n    "}}{{ ('--branch=' + antigen_bundle.tag) | quote }}
     {%- else -%}

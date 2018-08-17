@@ -61,4 +61,8 @@
                 - '--no-local-clone'
               env:
                 ENV_TEST3: 'testValue3'
+            - name: sdkman
+              url: '$HOME/.sdkman-zsh'
+            - name: escape
+              url: 't\e"s"ti\ng`pwd`test2$(pwd)'
         - username: test_usr3
