@@ -2,45 +2,49 @@
 language: python
 python: '2.7'
 
+env:
+  global:
+    - MOLECULEW_USE_SYSTEM=true
+
 # Spin off separate builds for each of the following versions
 # of Ansible and Linux.
 matrix:
   include:
     - env:
-        - ANSIBLE_VERSION=2.4.6
+        - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=centos
     - env:
-        - ANSIBLE_VERSION=2.4.6
+        - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=debian_max
     - env:
-        - ANSIBLE_VERSION=2.4.6
+        - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=debian_min
     - env:
-        - ANSIBLE_VERSION=2.4.6
+        - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=ubuntu_max
     - env:
-        - ANSIBLE_VERSION=2.4.6
+        - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=ubuntu_min
     - env:
-        - ANSIBLE_VERSION=2.4.6
+        - MOLECULEW_ANSIBLE=2.4.6
         - MOLECULE_SCENARIO=opensuse
     - env:
-        - ANSIBLE_VERSION=2.6.2
+        - MOLECULEW_ANSIBLE=2.6.2
         - MOLECULE_SCENARIO=centos
     - env:
-        - ANSIBLE_VERSION=2.6.2
+        - MOLECULEW_ANSIBLE=2.6.2
         - MOLECULE_SCENARIO=debian_max
     - env:
-        - ANSIBLE_VERSION=2.6.2
+        - MOLECULEW_ANSIBLE=2.6.2
         - MOLECULE_SCENARIO=debian_min
     - env:
-        - ANSIBLE_VERSION=2.6.2
+        - MOLECULEW_ANSIBLE=2.6.2
         - MOLECULE_SCENARIO=ubuntu_max
     - env:
-        - ANSIBLE_VERSION=2.6.2
+        - MOLECULEW_ANSIBLE=2.6.2
         - MOLECULE_SCENARIO=ubuntu_min
     - env:
-        - ANSIBLE_VERSION=2.6.2
+        - MOLECULEW_ANSIBLE=2.6.2
         - MOLECULE_SCENARIO=opensuse
 
 # Require the standard build environment
@@ -53,36 +57,15 @@ dist: trusty
 services:
   - docker
 
-# Cache Ansible and Molecule to speed things up
-cache:
-  - pip
-
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -o Dpkg::Options::='--force-confold' --force-yes -y docker-ce
-
 install:
-  # Install Ansible
-  - pip install "ansible~=$ANSIBLE_VERSION"
+  # Install dependencies
+  - ./moleculew wrapper-install
 
-  # Install Python Docker library
-  - pip install docker
-
-  # Install Molecule
-  - pip install 'molecule==2.16.0'
-
-  # Check Ansible version
-  - ansible --version
-
-  # Check Molecule version
-  - molecule --version
-
-  # Build the Docker images
-  - molecule create
-  - molecule destroy
+  # Display versions
+  - ./moleculew wrapper-versions
 
 script:
-  - molecule test --scenario-name=$MOLECULE_SCENARIO
+  - ./moleculew test --scenario-name=$MOLECULE_SCENARIO
 
 branches:
   only:
