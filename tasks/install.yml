@@ -8,6 +8,7 @@
     - git
     - zsh
     - tar
+    - gzip
 
 - name: create download directory
   file:
