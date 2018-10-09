@@ -5,7 +5,7 @@ galaxy_info:
   description: Role for installing the Antigen plugin manger for Zsh and using it to configure Zsh.
   company: GantSign Ltd.
   license: MIT
-  min_ansible_version: 2.4
+  min_ansible_version: 2.5
   platforms:
     - name: EL
       versions:
