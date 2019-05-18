@@ -11,6 +11,7 @@ lint:
 platforms:
   - name: ansible_role_antigen_debian_min
     image: debian:8
+    dockerfile: ../default/Dockerfile.j2
 
 provisioner:
   name: ansible
