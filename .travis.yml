@@ -29,22 +29,22 @@ matrix:
         - MOLECULEW_ANSIBLE=2.5.10
         - MOLECULE_SCENARIO=opensuse
     - env:
-        - MOLECULEW_ANSIBLE=2.7.0
+        - MOLECULEW_ANSIBLE=2.8.2
         - MOLECULE_SCENARIO=centos
     - env:
-        - MOLECULEW_ANSIBLE=2.7.0
+        - MOLECULEW_ANSIBLE=2.8.2
         - MOLECULE_SCENARIO=debian_max
     - env:
-        - MOLECULEW_ANSIBLE=2.7.0
+        - MOLECULEW_ANSIBLE=2.8.2
         - MOLECULE_SCENARIO=debian_min
     - env:
-        - MOLECULEW_ANSIBLE=2.7.0
+        - MOLECULEW_ANSIBLE=2.8.2
         - MOLECULE_SCENARIO=ubuntu_max
     - env:
-        - MOLECULEW_ANSIBLE=2.7.0
+        - MOLECULEW_ANSIBLE=2.8.2
         - MOLECULE_SCENARIO=ubuntu_min
     - env:
-        - MOLECULEW_ANSIBLE=2.7.0
+        - MOLECULEW_ANSIBLE=2.8.2
         - MOLECULE_SCENARIO=opensuse
 
 # Require the standard build environment
