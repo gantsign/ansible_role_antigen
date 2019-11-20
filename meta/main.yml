@@ -24,7 +24,7 @@ galaxy_info:
         - stretch
     - name: opensuse
       versions:
-        - '15.0'
+        - '15.1'
   galaxy_tags:
     - antigen
     - ohmyzsh
