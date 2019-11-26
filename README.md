@@ -15,7 +15,7 @@ particular Antigen bundles. You can find details of that role at
 Requirements
 ------------
 
-* Ansible >= 2.6
+* Ansible >= 2.7
 
 * Linux Distribution
 
