@@ -2,13 +2,12 @@
 - name: install dependencies
   become: yes
   package:
-    name: '{{ item }}'
+    name:
+      - git
+      - zsh
+      - tar
+      - gzip
     state: present
-  with_items:
-    - git
-    - zsh
-    - tar
-    - gzip
 
 - name: create download directory
   file:
