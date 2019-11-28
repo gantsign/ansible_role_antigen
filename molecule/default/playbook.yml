@@ -9,7 +9,7 @@
         name: '{{ item }}'
         home: '/home/{{ item }}'
         createhome: yes
-      with_items:
+      loop:
         - test_usr1
         - test_usr2
         - test_usr3
