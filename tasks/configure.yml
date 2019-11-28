@@ -8,6 +8,7 @@
   loop: '{{ users }}'
   loop_control:
     loop_var: user
+    label: '{{ user.username }}'
 
 - name: write .antigenrc for users
   become: yes
@@ -21,6 +22,7 @@
   loop: '{{ users }}'
   loop_control:
     loop_var: user
+    label: '{{ user.username }}'
 
 - name: create library config directories for users
   become: yes
@@ -33,6 +35,7 @@
   loop: '{{ users }}'
   loop_control:
     loop_var: user
+    label: '{{ user.username }}'
 
 - name: write library config for users
   become: yes
@@ -48,6 +51,8 @@
     - '{{ users }}'
     - antigen_libraries
     - skip_missing: yes
+  loop_control:
+    label: '{{ item.0.username }}: {{ item.1.name }}'
 
 - name: create bundle config directories for users
   become: yes
@@ -60,6 +65,7 @@
   loop: '{{ users }}'
   loop_control:
     loop_var: user
+    label: '{{ user.username }}'
 
 - name: write bundle config for users
   become: yes
@@ -75,6 +81,8 @@
     - '{{ users }}'
     - antigen_bundles
     - skip_missing: yes
+  loop_control:
+    label: '{{ item.0.username }}: {{ item.1.name }}'
 
 - name: write theme config for users
   become: yes
@@ -90,6 +98,7 @@
   loop: '{{ users }}'
   loop_control:
     loop_var: user
+    label: '{{ user.username }}'
 
 - name: add .antigenrc to .zshrc
   become: yes
@@ -103,6 +112,7 @@
   loop: '{{ users }}'
   loop_control:
     loop_var: user
+    label: '{{ user.username }}'
 
 - name: configure console for Debian family distributions
   include_tasks: configure-debian-console.yml
