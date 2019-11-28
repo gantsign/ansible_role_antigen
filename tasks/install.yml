@@ -29,7 +29,7 @@
     path: '~{{ item.username }}/.antigen'
     state: directory
     mode: 'u=rwx,go=rx'
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: install Antigen
   become: yes
@@ -42,7 +42,7 @@
     creates: '~{{ item.username }}/.antigen/antigen.zsh'
     owner: '{{ item.username }}'
     mode: 'go-w'
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: install oh-my-zsh
   include_tasks: install-oh-my-zsh.yml

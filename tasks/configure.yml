@@ -5,7 +5,7 @@
     name: '{{ item.username }}'
     shell: /bin/zsh
   when: (item.antigen_libraries is defined) or (item.antigen_theme is defined) or (item.antigen_bundles is defined)
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: write .antigenrc for users
   become: yes
@@ -16,7 +16,7 @@
     backup: yes
     mode: 'u=rw,go=r'
   when: (item.antigen_libraries is defined) or (item.antigen_theme is defined) or (item.antigen_bundles is defined)
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: create library config directories for users
   become: yes
@@ -26,7 +26,7 @@
     state: directory
     mode: 'u=rwx,go=rx'
   when: (item.antigen_libraries is defined) or (item.antigen_theme is defined) or (item.antigen_bundles is defined)
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: write library config for users
   become: yes
@@ -51,7 +51,7 @@
     state: directory
     mode: 'u=rwx,go=rx'
   when: (item.antigen_libraries is defined) or (item.antigen_theme is defined) or (item.antigen_bundles is defined)
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: write bundle config for users
   become: yes
@@ -79,8 +79,7 @@
   vars:
     antigen_theme: '{{ item.antigen_theme }}'
   when: item.antigen_theme is defined
-  with_items:
-    - '{{ users }}'
+  loop: '{{ users }}'
 
 - name: add .antigenrc to .zshrc
   become: yes
@@ -91,7 +90,7 @@
     create: yes
     mode: 'u=rw,go=r'
   when: (item.antigen_libraries is defined) or (item.antigen_theme is defined) or (item.antigen_bundles is defined)
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
 
 - name: configure console for Debian family distributions
   include_tasks: configure-debian-console.yml
