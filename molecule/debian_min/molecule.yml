@@ -5,8 +5,11 @@ dependency:
 driver:
   name: docker
 
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 
 platforms:
   - name: ansible_role_antigen_debian_min
@@ -16,9 +19,7 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    converge: ../default/playbook.yml
-  lint:
-    name: ansible-lint
+    converge: ../default/converge.yml
 
 scenario:
   name: debian_min
@@ -26,5 +27,3 @@ scenario:
 verifier:
   name: testinfra
   directory: ../default/tests/
-  lint:
-    name: flake8
