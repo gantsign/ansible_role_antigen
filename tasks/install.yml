@@ -8,6 +8,13 @@
       - tar
       - gzip
     state: present
+  when: ansible_os_family != 'Darwin'
+
+- name: install antigen
+  homebrew:
+    name: antigen
+    state: present
+  when: ansible_os_family == 'Darwin'
 
 - name: create download directory
   file:
@@ -21,6 +28,7 @@
     dest: '{{ antigen_download_dir }}/{{ antigen_local_filename }}'
     sha256sum: '{{ antigen_redis_sha256sum }}'
     mode: 'u=rw,go=r'
+  when: ansible_os_family != 'Darwin'
 
 - name: create install directory
   become: yes
@@ -47,6 +55,7 @@
   loop: "{{ users | map(attribute='username') | list }}"
   loop_control:
     loop_var: username
+  when: ansible_os_family != 'Darwin'
 
 - name: install oh-my-zsh
   include_tasks: install-oh-my-zsh.yml

@@ -1,6 +1,10 @@
 {{ ansible_managed | comment }}
 
+{% if ansible_os_family == 'Darwin' %}
+source /usr/local/share/antigen/antigen.zsh 
+{% else %}
 source $HOME/.antigen/antigen.zsh
+i{% endif%}
 
 for i in ~/.antigen-etc/use.d/*.zsh; do
     if [ -r $i ]; then
