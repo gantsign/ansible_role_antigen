@@ -14,7 +14,6 @@ lint: |
 platforms:
   - name: ansible_role_antigen_ubuntu_max
     image: ubuntu:18.04
-    dockerfile: ../default/Dockerfile.j2
 
 provisioner:
   name: ansible
