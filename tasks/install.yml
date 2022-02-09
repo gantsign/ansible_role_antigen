@@ -26,7 +26,7 @@
   get_url:
     url: '{{ antigen_redis_mirror }}/{{ antigen_redis_filename }}'
     dest: '{{ antigen_download_dir }}/{{ antigen_local_filename }}'
-    sha256sum: '{{ antigen_redis_sha256sum }}'
+    checksum: 'sha256:{{ antigen_redis_sha256sum }}'
     mode: 'u=rw,go=r'
   when: ansible_os_family != 'Darwin'
 
