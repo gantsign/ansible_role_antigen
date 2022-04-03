@@ -24,7 +24,7 @@ galaxy_info:
         - bullseye
     - name: opensuse
       versions:
-        - '15.1'
+        - '15.3'
   galaxy_tags:
     - antigen
     - ohmyzsh
