@@ -21,6 +21,8 @@ galaxy_info:
       versions:
         - jessie
         - stretch
+        - buster
+        - bullseye
     - name: opensuse
       versions:
         - '15.1'
