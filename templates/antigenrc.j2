@@ -16,6 +16,6 @@ for i in ~/.antigen-etc/bundle.d/*.zsh; do
 done
 unset i
 
-source ~/.antigen-etc/theme.zsh
+[[ -f ~/.antigen-etc/theme.zsh ]] && source ~/.antigen-etc/theme.zsh
 
 antigen apply
