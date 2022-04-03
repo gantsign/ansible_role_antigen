@@ -13,7 +13,7 @@ lint: |
 
 platforms:
   - name: ansible_role_antigen_debian_min
-    image: debian:8
+    image: debian:9
 
 provisioner:
   name: ansible
