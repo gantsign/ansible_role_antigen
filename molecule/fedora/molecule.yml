@@ -13,7 +13,7 @@ lint: |
 
 platforms:
   - name: ansible_role_antigen_fedora
-    image: fedora:31
+    image: fedora:35
 
 provisioner:
   name: ansible
