@@ -1,5 +1,11 @@
 {{ ansible_managed | comment }}
 
+ZSH_COMPLETIONS_CACHE="$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/cache/completions"
+if [[ -d "$ZSH_COMPLETIONS_CACHE" ]]; then
+    (( ${fpath[(Ie)"$ZSH_COMPLETIONS_CACHE"]} )) || fpath=("$ZSH_COMPLETIONS_CACHE" $fpath)
+fi
+unset ZSH_COMPLETIONS_CACHE
+
 source $HOME/.antigen/antigen.zsh
 
 for i in ~/.antigen-etc/use.d/*.zsh; do
