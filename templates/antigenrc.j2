@@ -8,19 +8,23 @@ unset ZSH_COMPLETIONS_CACHE
 
 source $HOME/.antigen/antigen.zsh
 
-for i in ~/.antigen-etc/use.d/*.zsh; do
-    if [ -r $i ]; then
-        source $i
-    fi
-done
-unset i
+if [[ -d ~/.antigen-etc/use.d ]]; then
+    for i in ~/.antigen-etc/use.d/*.zsh; do
+        if [ -r $i ]; then
+            source $i
+        fi
+    done
+    unset i
+fi
 
-for i in ~/.antigen-etc/bundle.d/*.zsh; do
-    if [ -r $i ]; then
-        source $i
-    fi
-done
-unset i
+if [[ -d ~/.antigen-etc/bundle.d ]]; then
+    for i in ~/.antigen-etc/bundle.d/*.zsh; do
+        if [ -r $i ]; then
+            source $i
+        fi
+    done
+    unset i
+fi
 
 [[ -f ~/.antigen-etc/theme.zsh ]] && source ~/.antigen-etc/theme.zsh
 
