@@ -27,7 +27,7 @@ jobs:
           - ubuntu_max
           - opensuse
         include:
-          - ansible-version: '2.8.16'
+          - ansible-version: '2.9.26' # min-ansible-test-version
             molecule-scenario: ubuntu_min
 
     env:
