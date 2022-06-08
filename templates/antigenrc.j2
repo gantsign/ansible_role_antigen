@@ -1,8 +1,8 @@
 {{ ansible_managed | comment }}
 
-{% if ansible_os_family == 'Darwin' && ansible_machine == 'arm64' %}
+{% if ansible_os_family == 'Darwin' and ansible_machine == 'arm64' %}
 source /opt/homebrew/share/antigen/antigen.zsh
-{% elif ansible_os_family == 'Darwin' && ansible_machine == 'x86_64' %}
+{% elif ansible_os_family == 'Darwin' and ansible_machine == 'x86_64' %}
 source /usr/local/share/antigen/antigen.zsh
 {% else %}
 source $HOME/.antigen/antigen.zsh
