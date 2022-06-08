@@ -30,3 +30,14 @@
   loop_control:
     loop_var: user
     label: '{{ user.username }}'
+
+- name: create completions cache directory
+  become: yes
+  become_user: '{{ username }}'
+  file:
+    path: '~{{ username }}/.antigen/bundles/robbyrussell/oh-my-zsh/cache/completions'
+    state: directory
+    mode: 'u=rwx,go=rx'
+  loop: "{{ users | map(attribute='username') | list }}"
+  loop_control:
+    loop_var: username

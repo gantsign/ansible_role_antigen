@@ -15,7 +15,7 @@ particular Antigen bundles. You can find details of that role at
 Requirements
 ------------
 
-* Ansible >= 2.8
+* Ansible >= 2.9
 
 * Linux Distribution
 
@@ -23,29 +23,30 @@ Requirements
 
         * Debian
 
-            * Jessie (8)
             * Stretch (9)
+            * Buster (10)
+            * Bullseye (11)
 
         * Ubuntu
 
-            * Xenial (16.04)
             * Bionic (18.04)
+            * Focal (20.04)
 
     * RedHat Family
 
-        * CentOS
+        * Rocky Linux
 
-            * 7
+            * 8
 
         * Fedora
 
-            * 31
+            * 35
 
     * SUSE Family
 
         * openSUSE
 
-            * 15.1
+            * 15.3
 
     * Note: other versions are likely to work but have not been tested.
 

@@ -1,27 +1,38 @@
 {{ ansible_managed | comment }}
 
+ZSH_COMPLETIONS_CACHE="$HOME/.antigen/bundles/robbyrussell/oh-my-zsh/cache/completions"
+if [[ -d "$ZSH_COMPLETIONS_CACHE" ]]; then
+    (( ${fpath[(Ie)"$ZSH_COMPLETIONS_CACHE"]} )) || fpath=("$ZSH_COMPLETIONS_CACHE" $fpath)
+fi
+unset ZSH_COMPLETIONS_CACHE
+
 {% if ansible_os_family == 'Darwin' and ansible_machine == 'arm64' %}
 source /opt/homebrew/share/antigen/antigen.zsh
 {% elif ansible_os_family == 'Darwin' and ansible_machine == 'x86_64' %}
 source /usr/local/share/antigen/antigen.zsh
 {% else %}
+
 source $HOME/.antigen/antigen.zsh
 {% endif%}
 
-for i in ~/.antigen-etc/use.d/*.zsh; do
-    if [ -r $i ]; then
-        source $i
-    fi
-done
-unset i
+if [[ -d ~/.antigen-etc/use.d ]]; then
+    for i in ~/.antigen-etc/use.d/*.zsh; do
+        if [ -r $i ]; then
+            source $i
+        fi
+    done
+    unset i
+fi
 
-for i in ~/.antigen-etc/bundle.d/*.zsh; do
-    if [ -r $i ]; then
-        source $i
-    fi
-done
-unset i
+if [[ -d ~/.antigen-etc/bundle.d ]]; then
+    for i in ~/.antigen-etc/bundle.d/*.zsh; do
+        if [ -r $i ]; then
+            source $i
+        fi
+    done
+    unset i
+fi
 
-source ~/.antigen-etc/theme.zsh
+[[ -f ~/.antigen-etc/theme.zsh ]] && source ~/.antigen-etc/theme.zsh
 
 antigen apply

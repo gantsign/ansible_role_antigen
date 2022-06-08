@@ -13,7 +13,7 @@ lint: |
 
 platforms:
   - name: ansible_role_antigen_debian_max
-    image: debian:9
+    image: debian:11
 
 provisioner:
   name: ansible

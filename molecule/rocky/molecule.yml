@@ -12,8 +12,8 @@ lint: |
   flake8
 
 platforms:
-  - name: ansible_role_antigen_centos
-    image: centos:7
+  - name: ansible_role_antigen_rocky
+    image: rockylinux/rockylinux:8
 
 provisioner:
   name: ansible
