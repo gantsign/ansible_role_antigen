@@ -1,10 +1,12 @@
 {{ ansible_managed | comment }}
 
-{% if ansible_os_family == 'Darwin' %}
+{% if ansible_os_family == 'Darwin' && ansible_machine == 'arm64' %}
+source /opt/homebrew/share/antigen/antigen.zsh
+{% elif if ansible_os_family == 'Darwin' && ansible_machine == 'x86_64' %}
 source /opt/homebrew/share/antigen/antigen.zsh
 {% else %}
 source $HOME/.antigen/antigen.zsh
-i{% endif%}
+{% endif%}
 
 for i in ~/.antigen-etc/use.d/*.zsh; do
     if [ -r $i ]; then
