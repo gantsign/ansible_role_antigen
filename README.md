@@ -12,6 +12,17 @@ This role has a companion role that enables you to conditionally install
 particular Antigen bundles. You can find details of that role at
 [gantsign.antigen_budles](https://galaxy.ansible.com/gantsign/antigen_bundles).
 
+:thumbsdown: Deprecation Notice :thumbsdown:
+--------------------------------------------
+The last Antigen release was
+[v2.2.3](https://github.com/zsh-users/antigen/releases/tag/v2.2.3) on 4 Jan
+2018. This role actually uses
+[v2.0.2](https://github.com/zsh-users/antigen/releases/tag/v2.0.2) (22 Apr 2017)
+due to issues with later versions and some Oh My Zsh plugins. Since Antigen
+appears to no longer be maintained, we recommend against using this role. This
+role will continue to be maintained until such time as GantSign migrates to a
+different Zsh plugin manager.
+
 Requirements
 ------------
 
