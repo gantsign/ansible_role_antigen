@@ -6,7 +6,14 @@ if [[ -d "$ZSH_COMPLETIONS_CACHE" ]]; then
 fi
 unset ZSH_COMPLETIONS_CACHE
 
+{% if ansible_os_family == 'Darwin' and ansible_machine == 'arm64' %}
+source /opt/homebrew/share/antigen/antigen.zsh
+{% elif ansible_os_family == 'Darwin' and ansible_machine == 'x86_64' %}
+source /usr/local/share/antigen/antigen.zsh
+{% else %}
+
 source $HOME/.antigen/antigen.zsh
+{% endif%}
 
 if [[ -d ~/.antigen-etc/use.d ]]; then
     for i in ~/.antigen-etc/use.d/*.zsh; do
